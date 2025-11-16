@@ -9,323 +9,290 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/styles.css">
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow-x: hidden; /* Prevent horizontal scroll */
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      /* Deeper navy to black gradient */
-      background: linear-gradient(to bottom right, #0A0A2A, #000000);
-      z-index: -2;
-    }
-    .logo-img {
-      height: 60px;
-      width: auto;
-      filter: drop-shadow(0 0 8px rgba(100, 149, 237, 0.7)); /* Subtle glow for logo */
-    }
+   /* --- Global & Background Enhancements --- */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  /* Updated Font: Modern, Geometric Font for Tech Feel */
+  font-family: 'Rajdhani', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  min-height: 100vh; /* Ensure body takes full viewport height */
+}
 
-    .header-container {
-      padding: 1.5rem 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+/* Keyframe for Logo Pulse */
+@keyframes neon-pulse {
+  0% { filter: drop-shadow(0 0 10px rgba(100, 149, 237, 0.5)); }
+  50% { filter: drop-shadow(0 0 15px rgba(100, 149, 237, 1.0)); }
+  100% { filter: drop-shadow(0 0 10px rgba(100, 149, 237, 0.5)); }
+}
 
-    .header-text h2 {
-      font-weight: 800;
-      color: #ffffff;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Subtle text shadow for header */
-    }
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Deeper navy to black gradient - Kept this, it's good */
+  background: linear-gradient(to bottom right, #0A0A2A, #000000);
+  z-index: -2;
+}
 
-    .tagline {
-      font-size: 1rem;
-      color: #bbdefb;
-      font-weight: 300;
-    }
+.logo-img {
+  height: 70px; /* Slightly larger logo */
+  width: auto;
+  filter: drop-shadow(0 0 10px #4d79ff); /* Brighter initial glow */
+  animation: neon-pulse 3s infinite alternate; /* New: Subtle pulse animation */
+}
 
-    .card {
-      background-color: rgba(255, 255, 255, 0.08); /* Semi-transparent white */
-      border-radius: 15px;
-      color: #ffffff;
-      border: 1px solid rgba(100, 149, 237, 0.3); /* Initial subtle border */
-      box-shadow: 0 0 15px rgba(100, 149, 237, 0.4); /* Initial subtle glow */
-      transition: all 0.3s ease-in-out;
-    }
+/* --- Header Enhancements --- */
+.header-container {
+  padding: 2rem 1.5rem; /* Increased padding */
+  /* Added dynamic angle border */
+  border-bottom: 2px solid #535bef; 
+  box-shadow: 0 5px 20px rgba(83, 91, 239, 0.4);
+  background-color: rgba(0, 0, 0, 0.2); /* Slight background for contrast */
+}
 
-    .card:hover {
-      box-shadow: 0 0 25px rgba(100, 149, 237, 0.8); /* Stronger glow on hover */
-      border-color: rgba(100, 149, 237, 0.7);
-    }
+.header-text h2 {
+  font-weight: 700;
+  font-size: 2.5rem; /* Slightly larger heading */
+  color: #c5d9ff; /* Brighter blue-white */
+  letter-spacing: 3px; /* Increased letter spacing */
+  text-shadow: 0 0 15px rgba(197, 217, 255, 0.7); /* Stronger text shadow */
+}
 
-    .card h4, .card h6 {
-        color: #ffffff;
-    }
-    
-    .btn-primary {
-      background-color: #0d47a1; /* Darker blue */
-      border: none;
-      padding: 0.8rem 1.5rem;
-      font-size: 1.1rem;
-      border-radius: 8px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 0 10px rgba(13, 71, 161, 0.5);
-    }
+.tagline {
+  font-size: 1.1rem;
+  color: #8cafff; /* More vibrant blue */
+  font-weight: 400;
+  letter-spacing: 1px;
+}
 
-    .btn-primary:hover {
-      background-color: #1976d2; /* Lighter blue on hover */
-      transform: translateY(-2px);
-      box-shadow: 0 0 20px rgba(25, 118, 210, 0.7);
-    }
+/* --- Card Enhancements --- */
+.card {
+  background-color: rgba(255, 255, 255, 0.05); /* Slightly less opaque */
+  border-radius: 20px; /* More rounded corners */
+  padding: 30px;
+  border: 1px solid rgba(83, 91, 239, 0.5); 
+  box-shadow: 0 0 20px rgba(83, 91, 239, 0.6); 
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+}
 
-    .form-label {
-        color: #e0e0e0;
-        font-weight: 500;
-    }
+.card:hover {
+  box-shadow: 0 8px 30px rgba(83, 91, 239, 1.0); /* Enhanced hover glow */
+  transform: translateY(-5px); /* Lift effect on hover */
+  border-color: rgba(132, 169, 255, 1.0);
+}
 
-    .form-control {
-        background-color: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #ffffff;
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-    }
-    .form-control::placeholder {
-        color: #bdbdbd;
-    }
-    .form-control:focus {
-        background-color: rgba(255, 255, 255, 0.15);
-        border-color: #64b5f6;
-        box-shadow: 0 0 0 0.25rem rgba(100, 149, 237, 0.25);
-        color: #ffffff;
-    }
+/* --- Button Enhancements --- */
+.btn-primary {
+  background-color: #0d47a1;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 10px;
+  /* Added neon shadow for button */
+  box-shadow: 0 0 15px #4d79ff; 
+  text-transform: uppercase;
+}
 
-    .label-box {
-      background-color: rgba(100, 149, 237, 0.1); /* Lighter blue with transparency */
-      padding: 12px 20px;
-      border-radius: 30px;
-      font-weight: 500;
-      color: #e3f2fd; /* Light blue text */
-      backdrop-filter: blur(8px); /* Stronger blur */
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid rgba(100, 149, 237, 0.4);
-      box-shadow: 0 0 12px rgba(100, 149, 237, 0.4);
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
+.btn-primary:hover {
+  background-color: #1976d2;
+  transform: translateY(-3px); /* Stronger lift on hover */
+  box-shadow: 0 0 25px #8cafff; /* Brighter, wider glow on hover */
+}
 
-    .label-box:hover {
-      background-color: rgba(100, 149, 237, 0.2);
-      box-shadow: 0 0 20px rgba(100, 149, 237, 0.8);
-      transform: translateY(-3px);
-    }
+/* --- Form Control Enhancements --- */
+.form-control {
+  background-color: rgba(255, 255, 255, 0.05); /* Lighter background */
+  border: 1px solid rgba(132, 169, 255, 0.5); /* Blue-tinted border */
+  color: #ffffff;
+}
+.form-control:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #8cafff;
+  /* Stronger focus glow */
+  box-shadow: 0 0 0 0.25rem rgba(140, 175, 255, 0.5); 
+}
 
-    .label-box .fas {
-        color: #ffeb3b; /* Yellow for icons */
-    }
+/* --- Label Box (Chip) Enhancements --- */
+.label-box {
+  background-color: rgba(83, 91, 239, 0.15); /* More background color */
+  padding: 15px 25px; /* More padding */
+  border-radius: 35px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff; 
+  /* Brighter glow */
+  box-shadow: 0 0 15px rgba(83, 91, 239, 0.7); 
+}
 
-    .footer {
-      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-      color: #e0e0e0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
-      margin-top: auto; /* Push footer to the bottom */
-    }
+.label-box:hover {
+  background-color: rgba(83, 91, 239, 0.3);
+  box-shadow: 0 0 30px rgba(83, 91, 239, 1.0);
+  transform: translateY(-4px); 
+}
 
-    .about-btn {
-      margin-top: 1rem;
-      background-color: #ffffff;
-      color: #0d47a1;
-      font-weight: 600;
-      border-radius: 5px;
-      padding: 0.75rem 1.5rem;
-      transition: all 0.3s ease;
-    }
+.label-box .fas {
+  color: #ffe082; /* Muted yellow/amber for better contrast */
+}
 
-    .about-btn:hover {
-      background-color: #e3f2fd;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
+/* --- Content Wrapper & Footer --- */
+.content {
+  padding: 40px 20px;
+  min-height: calc(100vh - 100px); /* Account for header/footer height */
+}
 
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .header-text h2 {
-          font-size: 1.8rem;
-      }
-      .tagline {
-          font-size: 0.8rem;
-      }
-      .label-box {
-          padding: 10px 15px;
-          font-size: 0.9rem;
-      }
-      .modal-dialog {
-          margin: 1rem;
-      }
-      .modal-body.d-flex {
-          flex-direction: column;
-          align-items: center;
-      }
-      .team-member {
-          width: 80%; /* Adjust width for better spacing on small screens */
-      }
-    }
+.footer {
+  background-color: rgba(0, 0, 0, 0.6); 
+  padding: 2rem;
+  text-align: center;
+}
 
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-    .content {
-      position: relative;
-      z-index: 1;
-      padding: 20px;
-      text-align: center;
-    }
+/* --- Responsive Adjustments (Kept & fine-tuned) --- */
+@media (max-width: 768px) {
+  .header-text h2 {
+      font-size: 2rem;
+  }
+  .header-container {
+    padding: 1.5rem 1rem;
+  }
+  .tagline {
+      font-size: 0.9rem;
+  }
+}
+    /* --- New CSS for the Waitlist Card --- */
 
-    /* Modal Styling */
-    .modal-content {
-      background: linear-gradient(135deg, #1A1A3A, #0A0A1A); /* Darker gradient for modals */
-      border-radius: 20px;
-      border: 2px solid #535bef;
-      box-shadow: 0 8px 40px rgba(83, 91, 239, 0.6);
-      backdrop-filter: blur(10px); /* Stronger blur for modals */
-    }
+/* Waitlist Container Styling - Center and spacing */
+.waitlist-container {
+    max-width: 450px; /* Constrain width for better focus */
+    margin-top: 5rem !important; /* Ensure good spacing below header */
+}
 
-    .modal-header {
-      background: rgba(83, 91, 239, 0.4); /* Slightly darker header for modals */
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .modal-title {
-        font-weight: 700;
-        color: #e3f2fd;
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-    }
-    .btn-close-white {
-      filter: brightness(2); /* Make close button more visible */
-    }
+/* Card Styling - Overrides the generic .card style for this main element */
+.waitlist-container .card {
+    background-color: rgba(10, 10, 42, 0.8); /* Darker, less transparent background for form */
+    border-radius: 20px;
+    padding: 2.5rem !important;
+    border: 2px solid var(--neon-blue-primary); /* Stronger primary border */
+    box-shadow: 0 0 40px rgba(83, 91, 239, 0.9); /* Intense, focused blue glow */
+    transition: all 0.4s ease-in-out;
+}
 
-    .team-member {
-      margin: 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px;
-      border-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(83, 91, 239, 0.2);
-    }
-    .team-member:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 25px rgba(83, 91, 239, 0.7);
-      background-color: rgba(255, 255, 255, 0.1);
-    }
+.waitlist-container .card:hover {
+    box-shadow: 0 0 60px rgba(83, 91, 239, 1.2), 0 0 10px #ffffff; /* Even stronger glow + hint of white */
+    transform: scale(1.02); /* Slight lift/enlarge on hover */
+}
 
-    .circle-img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #535bef;
-      box-shadow: 0 0 15px rgba(83, 91, 239, 0.6);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    .team-member:hover .circle-img {
-      border-color: #a7b1ff;
-      box-shadow: 0 0 25px rgba(83, 91, 239, 1);
-    }
-    
-    .modal-body p {
-        line-height: 1.8;
-        font-size: 0.95rem;
-    }
-    .modal-body strong {
-        font-weight: 600;
-    }
-    .modal-body .fas {
-        width: 20px; /* Align icons */
-        text-align: center;
-    }
+/* Header Text (Join the Waitlist) */
+.waitlist-container h4 {
+    color: var(--neon-blue-light);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(140, 175, 255, 0.5);
+    margin-bottom: 1rem !important;
+}
 
-    .clickable-circle {
-        position: relative;
-        overflow: hidden;
-    }
+/* Sub-header Text (Be the First to know...) */
+.waitlist-container h6 {
+    color: #bdbdbd; /* Slightly lighter gray */
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 2rem !important;
+}
 
-    .clickable-circle::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle at center, rgba(83, 91, 239, 0.3) 0%, transparent 70%);
-        opacity: 0;
-        transition: opacity 0.4s ease-out;
-        z-index: 0;
-    }
+/* Form Label Styling */
+.waitlist-container .form-label {
+    color: #e0e0e0;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
 
-    .clickable-circle:hover::before {
-        opacity: 1;
-    }
+/* Input Control Styling (Reusing enhancements from before) */
+.waitlist-container .form-control {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(132, 169, 255, 0.5);
+    color: #ffffff;
+    padding: 0.85rem 1rem;
+}
 
-    .clickable-circle > * {
-        position: relative;
-        z-index: 1;
-    }
+.waitlist-container .form-control:focus {
+    border-color: var(--neon-blue-light);
+    box-shadow: 0 0 0 0.25rem rgba(140, 175, 255, 0.5);
+}
+
+/* Button Styling (Enhanced for 'Power') */
+.waitlist-container .btn-primary {
+    background: linear-gradient(90deg, #1976d2, #0d47a1); /* Gradient for depth */
+    border: none;
+    padding: 1.1rem 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-radius: 10px;
+    /* Neon shadow for button */
+    box-shadow: 0 0 15px #4d79ff; 
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.waitlist-container .btn-primary:hover {
+    background: linear-gradient(90deg, #1976d2, #4d79ff); /* Brighter gradient on hover */
+    transform: translateY(-4px) scale(1.01); /* Stronger lift on hover */
+    box-shadow: 0 8px 30px rgba(77, 121, 255, 0.9); /* Wide, bright glow */
+}
+
+.waitlist-container .btn-primary .fa-paper-plane {
+    /* Subtle animation on the plane icon */
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+}
+
+.waitlist-container .btn-primary:hover .fa-paper-plane {
+    transform: translateX(5px); /* Push the plane forward on hover */
+}
   </style>
 </head>
 <body>
     <canvas id="stars"></canvas>
    
-  <div class="container d-flex justify-content-center mt-4">
+<div class="container d-flex justify-content-center mt-4">
     <div class="header-container d-flex flex-row align-items-center justify-content-between w-100">
-      <div class="logo-wrapper">
-        <img src="./images/LOGO.png" alt="Logo" class="logo-img">
-      </div>
-      <div class="header-text text-end">
-        <h2 class="mb-0">XT-HUB</h2>
-        <p class="tagline">Wait-List</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="container mt-5 waitlist-container">
-    <div class="card p-4 shadow-sm">
-      <h4 class="mb-3 text-center"><i class="fas fa-envelope-open-text me-2"></i>Join the Waitlist</h4>
-      <h6 class="mb-3 text-center">Be the First to know when we Launch 🚀</h6>
-
-      <form id="waitlist-form">
-        <div class="mb-3">
-          <label for="email" class="form-label">Email Address</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+        <div class="logo-wrapper">
+            <img src="./images/LOGO.png" alt="Logo" class="logo-img">
         </div>
-        <button type="submit" class="btn btn-primary w-100">
-          <i class="fas fa-paper-plane me-2"></i>Join Now
-        </button>
-      </form>
+        <div class="header-text text-end">
+            <h2 class="mb-0">XT-HUB</h2>
+            <p class="tagline">Wait-List</p>
+        </div>
     </div>
-  </div>
+</div>
+
+ <div class="container mt-5 d-flex justify-content-center">
+    <div class="waitlist-container">
+        <div class="card p-4 shadow-sm">
+            <h4 class="mb-3 text-center">
+                <i class="fas fa-envelope-open-text me-2" style="color: #ffeb3b;"></i>Join the Waitlist
+            </h4>
+            <h6 class="mb-3 text-center">Be the First to know when we Launch 🚀</h6>
+
+            <form id="waitlist-form">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="fas fa-paper-plane me-2"></i>Join Now
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 
 
   
@@ -623,7 +590,6 @@
   </div>
   
   
-  
 <div class="labels-container d-flex flex-wrap justify-content-center gap-3 mt-5">
     <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalInnovative"><i class="fas fa-lightbulb"></i> Innovative Community</div>
     <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalAccess"><i class="fas fa-bolt"></i> Early Access</div>
@@ -632,13 +598,13 @@
     <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalTours"><i class="fas fa-map-marked-alt"></i> Tours</div>
     <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalMentorship"><i class="fas fa-user-graduate"></i> Mentorship</div>
     <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalBeta"><i class="fas fa-vial"></i> Beta Features</div>
-  </div>
-  
-  <div class="modal fade" id="modalInnovative" tabindex="-1" aria-hidden="true">
+</div>
+
+<div class="modal fade" id="modalInnovative" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-white" style="background: linear-gradient(135deg, #3a3fdf, #1e1e2f); border-radius: 20px; border: 2px solid #7d8bff;">
+      <div class="modal-content text-white">
         <div class="modal-header border-0">
-          <h5 class="modal-title"><i class="fas fa-lightbulb text-warning me-2"></i>Innovative Community</h5>
+          <h5 class="modal-title"><i class="fas fa-lightbulb me-2"></i>Innovative Community</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -646,13 +612,13 @@
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="modal fade" id="modalAccess" tabindex="-1" aria-hidden="true">
+</div>
+
+<div class="modal fade" id="modalAccess" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-white" style="background: linear-gradient(135deg, #222831, #393E46); border-radius: 20px; border: 2px solid #00ADB5;">
+      <div class="modal-content text-white">
         <div class="modal-header border-0">
-          <h5 class="modal-title"><i class="fas fa-bolt text-warning me-2"></i>Early Access</h5>
+          <h5 class="modal-title"><i class="fas fa-bolt me-2"></i>Early Access</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -660,13 +626,13 @@
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="modal fade" id="modalClass" tabindex="-1" aria-hidden="true">
+</div>
+
+<div class="modal fade" id="modalClass" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-white" style="background: linear-gradient(135deg, #1f4037, #99f2c8); border-radius: 20px; border: 2px solid #ffffff33;">
+      <div class="modal-content text-white">
         <div class="modal-header border-0">
-          <h5 class="modal-title"><i class="fas fa-chalkboard-teacher text-warning me-2"></i>Tech Class</h5>
+          <h5 class="modal-title"><i class="fas fa-chalkboard-teacher me-2"></i>Tech Class</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -674,13 +640,13 @@
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="modal fade" id="modalAwards" tabindex="-1" aria-hidden="true">
+</div>
+
+<div class="modal fade" id="modalAwards" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-white" style="background: linear-gradient(135deg, #8E2DE2, #4A00E0); border-radius: 20px; border: 2px solid #d1c4e9;">
+      <div class="modal-content text-white">
         <div class="modal-header border-0">
-          <h5 class="modal-title"><i class="fas fa-award text-warning me-2"></i>Exclusive Awards</h5>
+          <h5 class="modal-title"><i class="fas fa-award me-2"></i>Exclusive Awards</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -688,13 +654,13 @@
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="modal fade" id="modalTours" tabindex="-1" aria-hidden="true">
+</div>
+
+<div class="modal fade" id="modalTours" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-white" style="background: linear-gradient(135deg, #283048, #859398); border-radius: 20px; border: 2px solid #90a4ae;">
+      <div class="modal-content text-white">
         <div class="modal-header border-0">
-          <h5 class="modal-title"><i class="fas fa-map-marked-alt text-warning me-2"></i>Tours</h5>
+          <h5 class="modal-title"><i class="fas fa-map-marked-alt me-2"></i>Tours</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -702,13 +668,13 @@
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="modal fade" id="modalMentorship" tabindex="-1" aria-hidden="true">
+</div>
+
+<div class="modal fade" id="modalMentorship" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-white" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); border-radius: 20px; border: 2px solid #6dd5ed;">
+      <div class="modal-content text-white">
         <div class="modal-header border-0">
-          <h5 class="modal-title"><i class="fas fa-user-graduate text-warning me-2"></i>Mentorship</h5>
+          <h5 class="modal-title"><i class="fas fa-user-graduate me-2"></i>Mentorship</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -716,13 +682,13 @@
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="modal fade" id="modalBeta" tabindex="-1" aria-hidden="true">
+</div>
+
+<div class="modal fade" id="modalBeta" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-white" style="background: linear-gradient(135deg, #000428, #004e92); border-radius: 20px; border: 2px solid #5bc0de;">
+      <div class="modal-content text-white">
         <div class="modal-header border-0">
-          <h5 class="modal-title"><i class="fas fa-vial text-warning me-2"></i>Beta Features</h5>
+          <h5 class="modal-title"><i class="fas fa-vial me-2"></i>Beta Features</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -730,15 +696,15 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
   
 
-  <footer class="footer mt-5 py-4 text-center">
+<footer class="footer mt-5 py-4 text-center">
     <div class="container">
       <p class="mb-1"><i class="fas fa-code-branch me-2"></i>Tech-Nxt Company</p>
       <small class="footer-text">Empowering tech enthusiasts and innovators to connect, grow, and launch the future together.</small>
     </div>
-  </footer>
+</footer>
 
   
 
